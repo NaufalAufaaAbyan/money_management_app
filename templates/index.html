@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Money Management Futuristic</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Money Management Futuristic</h1>
+    </header>
+
+    <section class="balances">
+      <div class="balance-card">
+        <h3>Cash</h3>
+        <p id="cash-balance">Rp 0</p>
+        <input id="cash-input" placeholder="Masukkan nominal (IDR)" />
+        <div class="btn-group">
+          <button id="cash-add-btn" class="btn green">Tambah</button>
+          <button id="cash-withdraw-btn" class="btn red">Tarik</button>
+        </div>
+      </div>
+
+      <div class="balance-card">
+        <h3>ATM</h3>
+        <p id="atm-balance">Rp 0</p>
+        <input id="atm-input" placeholder="Masukkan nominal (IDR)" />
+        <div class="btn-group">
+          <button id="atm-add-btn" class="btn green">Tambah</button>
+          <button id="atm-withdraw-btn" class="btn red">Tarik</button>
+        </div>
+      </div>
+
+      <div class="balance-card crypto">
+        <h3>Crypto</h3>
+        <div id="crypto-list"></div>
+        <input id="crypto-token-input" placeholder="Token (misal: BTC)" maxlength="5" />
+        <input id="crypto-amount-input" placeholder="Jumlah (IDR)" />
+        <div class="btn-group">
+          <button id="crypto-add-btn" class="btn green">Tambah</button>
+          <button id="crypto-withdraw-btn" class="btn red">Tarik</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="goals-section">
+      <h2>Goals Keuangan</h2>
+      <form id="goal-form">
+        <input type="text" id="goal-name" placeholder="Nama Goal" required />
+        <input type="number" id="goal-target" placeholder="Target (IDR)" required min="1" />
+        <button type="submit" class="btn blue">Tambah Goal</button>
+      </form>
+      <ul id="goals-list"></ul>
+    </section>
+
+    <section class="transactions-section">
+      <h2>Riwayat Transaksi</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>Tipe</th>
+            <th>Aset</th>
+            <th>Jumlah</th>
+          </tr>
+        </thead>
+        <tbody id="transactions-body"></tbody>
+      </table>
+    </section>
+
+
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
